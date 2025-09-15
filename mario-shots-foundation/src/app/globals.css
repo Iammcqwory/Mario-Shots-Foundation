@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 358 77% 50%; /* Mario Shots Foundation Red */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark mode */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 358 77% 50%; /* Mario Shots Foundation Red */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 358 77% 50%; /* Mario Shots Foundation Red */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Hero section styles */
+.hero-gradient {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+}
+
+.hero-bg-image {
+  background-image: url('https://images.unsplash.com/photo-1510127814320-f56f3f019054?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5);
+}
+
+/* Custom utility classes */
+/* Balance wrapping for headings or any long text blocks */
+.balance-text {
+  /* stylelint-disable-next-line property-no-unknown */
+  text-wrap: balance;
+}
+
+.section-padding {
+  @apply py-12 md:py-20;
+}
+
+.container-padding {
+  @apply px-4;
+}
+
+/* Mario Shots specific styles */
+.mario-red {
+  @apply text-mario-600 dark:text-mario-500;
+}
+
+.mario-red-bg {
+  @apply bg-mario-600 dark:bg-mario-700 text-white;
+}
+
+.mario-red-border {
+  @apply border-mario-600 dark:border-mario-500;
+}
+
+.mario-red-hover:hover {
+  @apply bg-mario-700 dark:bg-mario-800;
+}
+
+.program-card-bg[data-image] {
+  background-size: cover;
+  background-position: center;
+}
+.program-card-bg[data-image]:not([data-image=""]) {
+  background-image: attr(data-image url);
+}
