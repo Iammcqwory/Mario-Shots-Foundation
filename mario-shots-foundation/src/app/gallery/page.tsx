@@ -1,6 +1,7 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import GalleryGrid from "@/components/gallery/gallery-grid";
 import GalleryCategories from "@/components/gallery/gallery-categories";
+import { PageHeader } from "@/components/layout/page-header";
 import { galleryCategories } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -8,7 +9,6 @@ export const metadata: Metadata = {
   description: "Explore Mario's photography work and images from our community of young photographers.",
 };
 
-// Sample gallery images for demonstration
 const galleryImages = [
   {
     id: 1,
@@ -123,19 +123,14 @@ const galleryImages = [
 export default function GalleryPage() {
   return (
     <div className="container mx-auto px-4 py-16">
-      {/* Hero Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">The Mario Archive</h1>
-        <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-          Explore Mario's photographic legacy and the work of our workshop graduates.
-          A visual journey through culture, community, and creative expression.
-        </p>
-      </div>
+      <PageHeader
+        title="The Mario Archive"
+        description="Explore Mario's photographic legacy and the work of our workshop graduates. A visual journey through culture, community, and creative expression."
+        className="mb-12"
+        descriptionClassName="dark:text-zinc-400"
+      />
 
-      {/* Gallery Filter Categories */}
       <GalleryCategories categories={galleryCategories} />
-
-      {/* Gallery Grid */}
       <GalleryGrid images={galleryImages} />
     </div>
   );

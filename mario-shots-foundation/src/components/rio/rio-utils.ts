@@ -3,6 +3,179 @@
 export function detectIntent(message: string) {
   const msg = message.toLowerCase();
 
+  // Navigation intents
+  if (
+    msg.includes("go to") ||
+    msg.includes("take me to") ||
+    msg.includes("navigate to") ||
+    msg.includes("show me the") ||
+    msg.includes("open the")
+  ) {
+    return "navigate";
+  }
+
+  // Theme switching
+  if (
+    msg.includes("dark mode") ||
+    msg.includes("light mode") ||
+    msg.includes("switch theme") ||
+    msg.includes("toggle theme") ||
+    msg.includes("change theme")
+  ) {
+    return "theme_switch";
+  }
+
+  // Photo challenges
+  if (
+    msg.includes("challenge") ||
+    msg.includes("photo challenge") ||
+    msg.includes("give me a challenge") ||
+    msg.includes("daily challenge")
+  ) {
+    return "photo_challenge";
+  }
+
+  // Mario quotes
+  if (
+    msg.includes("inspire me") ||
+    msg.includes("mario quote") ||
+    msg.includes("wisdom") ||
+    msg.includes("motivation") ||
+    msg.includes("inspire")
+  ) {
+    return "mario_quote";
+  }
+
+  // Donation impact
+  if (
+    msg.includes("what can $") ||
+    msg.includes("donation impact") ||
+    msg.includes("how much can") ||
+    msg.includes("what does $") ||
+    msg.includes("impact of")
+  ) {
+    return "donation_impact";
+  }
+
+  // Newsletter
+  if (
+    msg.includes("newsletter") ||
+    msg.includes("subscribe") ||
+    msg.includes("email updates") ||
+    msg.includes("sign up for updates")
+  ) {
+    return "newsletter";
+  }
+
+  // Event countdown
+  if (
+    msg.includes("when is") ||
+    msg.includes("how long until") ||
+    msg.includes("countdown") ||
+    msg.includes("next event") ||
+    msg.includes("upcoming event")
+  ) {
+    return "event_countdown";
+  }
+
+  // Social sharing
+  if (
+    msg.includes("share") ||
+    msg.includes("tweet") ||
+    msg.includes("post about") ||
+    msg.includes("share to")
+  ) {
+    return "social_share";
+  }
+
+  // Language/Translation
+  if (
+    msg.includes("swahili") ||
+    msg.includes("kiswahili") ||
+    msg.includes("translate") ||
+    msg.includes("habari") ||
+    msg.includes("asante") ||
+    msg.includes("jambo")
+  ) {
+    return "translate";
+  }
+
+  // Text-to-speech
+  if (
+    msg.includes("read aloud") ||
+    msg.includes("read this") ||
+    msg.includes("speak") ||
+    msg.includes("say that") ||
+    msg.includes("read out")
+  ) {
+    return "read_aloud";
+  }
+
+  // Program matcher
+  if (
+    msg.includes("which program") ||
+    msg.includes("recommend a program") ||
+    msg.includes("what program should") ||
+    msg.includes("best program for me") ||
+    msg.includes("program quiz")
+  ) {
+    return "program_matcher";
+  }
+
+  // Clear chat
+  if (
+    msg.includes("start fresh") ||
+    msg.includes("clear chat") ||
+    msg.includes("clear history") ||
+    msg.includes("reset chat") ||
+    msg.includes("new conversation")
+  ) {
+    return "clear_chat";
+  }
+
+  // Help menu
+  if (
+    msg === "help" ||
+    msg === "?" ||
+    msg.includes("what can you do") ||
+    msg.includes("commands") ||
+    msg.includes("show me what you can do") ||
+    msg.includes("how do i use")
+  ) {
+    return "help_menu";
+  }
+
+  // Feedback
+  if (
+    msg.includes("give feedback") ||
+    msg.includes("feedback about rio") ||
+    msg.includes("rate rio") ||
+    msg.includes("improve rio") ||
+    msg.includes("suggestion for rio")
+  ) {
+    return "feedback";
+  }
+
+  // Badges/achievements
+  if (
+    msg.includes("my badges") ||
+    msg.includes("achievements") ||
+    msg.includes("what badges") ||
+    msg.includes("show badges") ||
+    msg.includes("my progress")
+  ) {
+    return "badges";
+  }
+
+  // Streak
+  if (
+    msg.includes("my streak") ||
+    msg.includes("challenge streak") ||
+    msg.includes("how many challenges")
+  ) {
+    return "streak";
+  }
+
   if (
     msg.includes("tip") ||
     msg.includes("how do i") ||
@@ -19,8 +192,7 @@ export function detectIntent(message: string) {
     msg.includes("advice") ||
     msg.includes("mario say") ||
     msg.includes("quote") ||
-    msg.includes("legacy") ||
-    msg.includes("challenge")
+    msg.includes("legacy")
   ) {
     return "mentorship_legacy";
   }
@@ -59,7 +231,6 @@ export function detectIntent(message: string) {
   if (
     msg.includes("mission") ||
     msg.includes("donate") ||
-    msg.includes("gear") ||
     msg.includes("contact") ||
     msg.includes("about mario") ||
     msg.includes("faq")
@@ -123,14 +294,224 @@ export function detectIntent(message: string) {
     return "technical_support";
   }
 
-  if (msg.includes("gear") || msg.includes("camera recommendation")) return "gear_recommendation";
+  if (msg.includes("gear") || msg.includes("camera recommendation") || msg.includes("what camera") || msg.includes("best lens")) return "gear_recommendation";
   if (msg.includes("edit") || msg.includes("editing tutorial")) return "editing_tutorial";
-  if (msg.includes("inspire") || msg.includes("story")) return "inspirational_story";
 
   return "unknown";
 }
 
+// Navigation routes mapping
+export const navigationRoutes: Record<string, string> = {
+  home: "/",
+  programs: "/programs",
+  gallery: "/gallery",
+  events: "/events",
+  about: "/about",
+  contact: "/contact",
+  donate: "/donate",
+  volunteer: "/volunteer",
+};
+
+// Mario's inspirational quotes
+export const marioQuotes = [
+  "See with your heart, not just your eyes.",
+  "The best stories are told through honest images.",
+  "Don't be afraid to make mistakes. Every shot is a lesson.",
+  "Photography is not about the camera—it's about seeing.",
+  "Light reveals truth. Learn to work with it, not against it.",
+  "Your perspective is unique. Trust it.",
+  "A photograph should feel like a conversation, not a monologue.",
+  "The moment you stop learning is the moment you stop growing.",
+  "Every subject has a story. Your job is to find it.",
+  "Patience is the photographer's greatest tool.",
+  "The world is full of beauty—train your eye to see it.",
+  "Create for yourself first. The audience will follow.",
+  "Emotion is more important than perfection.",
+  "The best photographs come from genuine connection.",
+  "Never stop exploring. The next great shot is always ahead.",
+];
+
+// Daily photo challenges
+export const photoChallenges = [
+  "📸 Capture reflections in unexpected places.",
+  "📸 Photograph the same subject from 5 different angles.",
+  "📸 Tell a story using only shadows and light.",
+  "📸 Find beauty in something ordinary today.",
+  "📸 Capture emotion without showing a face.",
+  "📸 Photograph a stranger's hands (with permission!).",
+  "📸 Create a portrait using only natural light.",
+  "📸 Document your neighborhood in 10 frames.",
+  "📸 Capture motion blur intentionally.",
+  "📸 Photograph textures around you.",
+  "📸 Create a minimalist composition.",
+  "📸 Tell a story through color alone.",
+  "📸 Capture a decisive moment on the street.",
+  "📸 Photograph the same location at dawn and dusk.",
+  "📸 Create an abstract image from everyday objects.",
+  "📸 Document someone's workspace.",
+  "📸 Capture the essence of your city in one frame.",
+  "📸 Photograph leading lines in architecture.",
+  "📸 Create a self-portrait that tells your story.",
+  "📸 Find and photograph patterns in nature.",
+];
+
+// Gear recommendations by category
+export const gearRecommendations: Record<string, string[]> = {
+  beginner: [
+    "📷 Canon EOS Rebel T7 - Great entry-level DSLR with excellent image quality.",
+    "📷 Nikon D3500 - Lightweight, easy to use, perfect for learning.",
+    "📷 Sony a6100 - Mirrorless option with fast autofocus.",
+    "📱 Your smartphone! - The best camera is the one you have with you.",
+  ],
+  portrait: [
+    "🎯 50mm f/1.8 lens - The 'nifty fifty' is perfect for portraits.",
+    "🎯 85mm f/1.8 lens - Creates beautiful background blur.",
+    "💡 Reflector - Affordable way to improve lighting.",
+  ],
+  street: [
+    "📷 Fujifilm X100V - Compact, discreet, excellent image quality.",
+    "📷 Ricoh GR III - Pocketable street photography legend.",
+    "👟 Comfortable shoes - You'll be walking a lot!",
+  ],
+  wildlife: [
+    "🔭 70-300mm telephoto lens - Good reach without breaking the bank.",
+    "🎒 Sturdy tripod - Essential for sharp wildlife shots.",
+    "⏰ Patience - The most important gear of all!",
+  ],
+};
+
+// Donation impact descriptions
+export const donationImpacts = [
+  { amount: 10, impact: "Provides photography prints for one exhibition participant." },
+  { amount: 25, impact: "Supplies a workshop participant with basic photography materials." },
+  { amount: 50, impact: "Provides a camera for a weekend workshop participant." },
+  { amount: 100, impact: "Sponsors one youth for a full workshop program." },
+  { amount: 250, impact: "Funds mental wellness resources for 10 creatives." },
+  { amount: 500, impact: "Supports a community exhibition showcasing emerging artists." },
+  { amount: 1000, impact: "Sponsors a full photography bootcamp for 5 youth." },
+];
+
+// Swahili responses
+export const swahiliResponses: Record<string, string> = {
+  greeting: "Karibu! Mimi ni RIO, msaidizi wako wa Mario Shots Foundation. Ninaweza kukusaidia vipi leo?",
+  programs: "Programu zetu zinajumuisha Warsha za Upigaji Picha, Afya ya Akili, na Hifadhi ya Sanaa. Je, ungependa kujua zaidi?",
+  donate: "Asante kwa kufikiri kutoa mchango! Mchango wako unasaidia vijana wabunifu. Tembelea ukurasa wetu wa Mchango.",
+  thanks: "Asante sana! Je, kuna kitu kingine ninachoweza kukusaidia?",
+  goodbye: "Kwaheri! Karibu tena wakati wowote.",
+  unknown: "Samahani, sikuelewa vizuri. Unaweza kuuliza kuhusu programu zetu, matukio, au historia ya Mario.",
+};
+
+// Upcoming events for countdown
+export const upcomingEventsData = [
+  { name: "Photography Essentials Workshop", date: "2026-06-15" },
+  { name: "Mario Legacy Exhibition", date: "2026-07-05" },
+  { name: "Creative Mental Health Dialogue", date: "2026-07-25" },
+];
+
+// Help menu content
+export const helpMenuContent = `
+🤖 **RIO Commands & Features**
+
+📍 **Navigation**
+• "Go to [page]" - Navigate to any page
+• "Dark/Light mode" - Switch theme
+
+📸 **Photography**
+• "Give me a challenge" - Get a photo challenge
+• "Inspire me" - Get a Mario quote
+• "Gear recommendations" - Camera/lens advice
+
+🎯 **Foundation**
+• "When is the next event" - Event countdown
+• "What can $50 do" - Donation impact
+• "Subscribe newsletter" - Stay updated
+• "Which program for me" - Find your program
+
+🌍 **Accessibility**
+• "Habari" - Switch to Swahili
+• "Read this" - Text-to-speech
+
+🏆 **Your Progress**
+• "My badges" - View achievements
+• "My streak" - Challenge streak
+
+🔧 **Utility**
+• "Start fresh" - Clear chat
+• "Give feedback" - Share suggestions
+• "Help" - Show this menu
+
+Just type naturally—I understand many variations! 💬
+`;
+
+// Achievement badges
+export const achievementBadges = [
+  { id: "first_chat", name: "First Contact", icon: "👋", description: "Started your first conversation with RIO" },
+  { id: "challenge_1", name: "Challenge Accepted", icon: "📸", description: "Completed your first photo challenge" },
+  { id: "challenge_5", name: "Rising Star", icon: "⭐", description: "Completed 5 photo challenges" },
+  { id: "challenge_10", name: "Dedicated Creator", icon: "🌟", description: "Completed 10 photo challenges" },
+  { id: "streak_3", name: "On a Roll", icon: "🔥", description: "3-day challenge streak" },
+  { id: "streak_7", name: "Week Warrior", icon: "💪", description: "7-day challenge streak" },
+  { id: "streak_30", name: "Monthly Master", icon: "🏆", description: "30-day challenge streak" },
+  { id: "explorer", name: "Explorer", icon: "🧭", description: "Used navigation to visit 5 pages" },
+  { id: "subscriber", name: "Community Member", icon: "💌", description: "Subscribed to the newsletter" },
+  { id: "multilingual", name: "Multilingual", icon: "🌍", description: "Used RIO in Swahili" },
+  { id: "sharer", name: "Ambassador", icon: "📣", description: "Shared foundation content on social media" },
+  { id: "helper", name: "Feedback Hero", icon: "💡", description: "Provided feedback to help improve RIO" },
+];
+
+// Extended daily photography tips
+export const extendedDailyTips = [
+  "💡 Morning light tip: The hour after sunrise offers soft, warm light perfect for portraits.",
+  "💡 Composition tip: Try the rule of thirds—place your subject off-center for more dynamic shots.",
+  "💡 Street tip: Shoot with a wide angle and get close to your subjects for intimate street photos.",
+  "💡 Portrait tip: Focus on the eyes—they're the window to the soul in any portrait.",
+  "💡 Landscape tip: Include foreground elements to add depth to your landscape shots.",
+  "💡 Night tip: Use a tripod and long exposure to capture beautiful light trails.",
+  "💡 Color tip: Look for complementary colors to make your subjects pop.",
+  "💡 Story tip: Before pressing the shutter, ask yourself: 'What story am I telling?'",
+  "💡 Mobile tip: Clean your phone lens! A smudge can ruin an otherwise perfect shot.",
+  "💡 Weather tip: Overcast days provide natural soft boxes—perfect for outdoor portraits.",
+  "💡 Practice tip: Take 100 photos of the same subject from different angles.",
+  "💡 Patience tip: The best wildlife shots require waiting—bring a book!",
+  "💡 Creativity tip: Set a limitation (one lens, one location) to boost creativity.",
+  "💡 Editing tip: Less is more—subtle edits often look more professional.",
+  "💡 Mario's wisdom: 'The best camera is the one you have with you.'",
+];
+
 export const intentResponses: Record<string, string[]> = {
+  navigate: [
+    "I'll take you there right away! 🚀",
+  ],
+  theme_switch: [
+    "Switching theme for you! ✨",
+  ],
+  photo_challenge: [
+    "Here's your photography challenge! Good luck! 📸",
+  ],
+  mario_quote: [
+    "Here's some wisdom from Mario...",
+  ],
+  donation_impact: [
+    "Here's what your donation can accomplish:",
+  ],
+  newsletter: [
+    "Great! I'd love to keep you updated. What's your email address?",
+  ],
+  event_countdown: [
+    "Let me check the upcoming events for you! 🗓️",
+  ],
+  social_share: [
+    "I'll help you share! Which platform would you like to use?",
+  ],
+  translate: [
+    "Karibu! I can help you in Swahili.",
+  ],
+  read_aloud: [
+    "I'll read that for you! 🔊",
+  ],
+  program_matcher: [
+    "Let me help you find the perfect program! What's your main interest: photography skills, mental wellness, or community storytelling?",
+  ],
   creative_coach: [
     "Here's a tip: Great photos start with great light! Try shooting during golden hour for beautiful, soft results.",
     "Mario always said: 'The best camera is the one you have with you.' Practice framing and experiment with angles!",
@@ -192,16 +573,11 @@ export const intentResponses: Record<string, string[]> = {
     "Technical hiccups happen. Describe your issue, and I'll do my best to guide you or connect you with support.",
   ],
   gear_recommendation: [
-    "Mario loved using a simple DSLR, but the best camera is the one you have! Check out this guide: https://www.digitalcameraworld.com/buying-guides/best-cameras-for-beginners",
-    "For beginners, try a Canon Rebel or Nikon D3500. More info: https://www.techradar.com/news/best-entry-level-dslr-camera"
+    "Mario loved using a simple DSLR, but the best camera is the one you have! Want recommendations for a specific type of photography?",
   ],
   editing_tutorial: [
     "Here's a great video on editing basics: https://www.youtube.com/watch?v=F8T94sdiNjc",
-    "Try this article for Lightroom tips: https://www.adobe.com/creativecloud/photography/discover/photo-editing-tips.html"
-  ],
-  inspirational_story: [
-    "Mario once mentored a young photographer who went on to win a national award. Read more: https://marioshotsfoundation.org/stories",
-    "Every great photographer started as a beginner. Here's an inspiring story: https://www.nationalgeographic.com/photography/article/inspiring-photographers"
+    "Try this article for Lightroom tips: https://www.adobe.com/creativecloud/photography/discover/photo-editing-tips.html",
   ],
   unknown: [
     "I'm here to help with anything about Mario, photography, or the foundation. Could you rephrase your question?",
@@ -214,25 +590,25 @@ export const faqs = [
     question: "How can I join a workshop?",
     keywords: ["join", "workshop", "sign up", "register"],
     answer: "You can sign up for our workshops through the Events page. Registration opens about a month before each workshop.",
-    related: ["Do I need to bring my own camera?", "How can I apply for a grant?"]
+    related: ["Do I need to bring my own camera?", "How can I apply for a grant?"],
   },
   {
     question: "Do I need to bring my own camera?",
     keywords: ["camera", "bring", "equipment"],
     answer: "No, we provide cameras and equipment for participants who don't have their own. Just bring your creativity!",
-    related: ["How can I join a workshop?", "How can I apply for a grant?"]
+    related: ["How can I join a workshop?", "How can I apply for a grant?"],
   },
   {
     question: "How can I apply for a grant?",
     keywords: ["grant", "apply", "funding"],
     answer: "Grant applications are accepted quarterly. Visit our Programs page for details on the application process.",
-    related: ["How can I join a workshop?", "Do I need to bring my own camera?"]
+    related: ["How can I join a workshop?", "Do I need to bring my own camera?"],
   },
   {
     question: "Can I volunteer as a mentor?",
     keywords: ["volunteer", "mentor", "help"],
     answer: "Yes! We're always looking for experienced photographers to mentor our participants. Fill out the volunteer form on our Volunteer page.",
-    related: ["How can I join a workshop?", "How can I apply for a grant?"]
+    related: ["How can I join a workshop?", "How can I apply for a grant?"],
   },
 ];
 
@@ -251,13 +627,15 @@ export const dailyTips = [
   "Affirmation: Your creative vision matters. Keep going!",
   "Tip: Change your perspective—get low or high for a unique shot.",
   "Affirmation: Every photo is a step forward. Embrace the journey!",
-  "Tip: Focus on the story, not just the subject."
+  "Tip: Focus on the story, not just the subject.",
 ];
 
 export const easterEggs: { trigger: string; response: string }[] = [
-  { trigger: "joke", response: "Why did the photographer get lost? Because he lost his focus!" },
-  { trigger: "who's your creator", response: "I was created by the Mario Shots Foundation team—with a little help from AI!" },
-  { trigger: "favorite camera", response: "RIO loves any camera that helps you tell your story!" },
+  { trigger: "joke", response: "Why did the photographer get lost? Because he lost his focus! 📸😄" },
+  { trigger: "who's your creator", response: "I was created by the Mario Shots Foundation team—with a little help from AI! 🤖✨" },
+  { trigger: "favorite camera", response: "RIO loves any camera that helps you tell your story! 📷❤️" },
+  { trigger: "secret", response: "Psst! Here's a secret: The magic isn't in the camera—it's in you! ✨" },
+  { trigger: "mario mario mario", response: "🎮 It's-a me, RIO! (But I'm inspired by the legendary Mario Job Ndege, not the plumber! 😉)" },
 ];
 
 export const chatThemes = [
@@ -269,4 +647,66 @@ export const chatThemes = [
 export const languages = [
   { name: "English", value: "en" },
   { name: "Swahili", value: "sw" },
-]; 
+];
+
+// Helper function to get random item from array
+export function getRandomItem<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// Helper function to extract page name from message
+export function extractPageName(message: string): string | null {
+  const msg = message.toLowerCase();
+  for (const page of Object.keys(navigationRoutes)) {
+    if (msg.includes(page)) {
+      return page;
+    }
+  }
+  return null;
+}
+
+// Helper function to parse donation amount from message
+export function extractDonationAmount(message: string): number | null {
+  const match = message.match(/\$?(\d+)/);
+  if (match) {
+    return parseInt(match[1], 10);
+  }
+  return null;
+}
+
+// Helper function to get donation impact
+export function getDonationImpact(amount: number): string {
+  const sorted = [...donationImpacts].sort((a, b) => b.amount - a.amount);
+  for (const tier of sorted) {
+    if (amount >= tier.amount) {
+      return `With $${amount}, you can: ${tier.impact}`;
+    }
+  }
+  return `Every dollar helps! Your $${amount} contribution makes a difference.`;
+}
+
+// Helper function to get event countdown
+export function getEventCountdown(eventName?: string): string {
+  const now = new Date();
+  const events = upcomingEventsData
+    .map((e) => ({ ...e, dateObj: new Date(e.date) }))
+    .filter((e) => e.dateObj > now)
+    .sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
+
+  if (events.length === 0) {
+    return "No upcoming events scheduled at the moment. Check back soon!";
+  }
+
+  let event = events[0];
+  if (eventName) {
+    const found = events.find((e) => e.name.toLowerCase().includes(eventName.toLowerCase()));
+    if (found) event = found;
+  }
+
+  const diffTime = event.dateObj.getTime() - now.getTime();
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) return `🎉 ${event.name} is TODAY!`;
+  if (diffDays === 1) return `🗓️ ${event.name} is TOMORROW!`;
+  return `🗓️ ${event.name} is in ${diffDays} days! (${event.date})`;
+}

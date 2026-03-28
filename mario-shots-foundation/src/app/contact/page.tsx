@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/contact/contact-form";
+import { PageHeader } from "@/components/layout/page-header";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -9,22 +10,16 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="container mx-auto px-4 py-16">
-      {/* Hero Section */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-        <p className="text-xl text-zinc-600 max-w-3xl mx-auto">
-          Have questions or want to get involved? We're here to help you connect with the
-          Mario Shots Foundation.
-        </p>
-      </div>
+      <PageHeader
+        title="Contact Us"
+        description="Have questions or want to get involved? We're here to help you connect with the Mario Shots Foundation."
+      />
 
       <ContactForm />
 
-      {/* Map Section */}
       <div className="mt-16">
         <h2 className="text-2xl font-bold mb-6 text-center">Find Us</h2>
         <div className="h-96 bg-zinc-200 rounded-lg overflow-hidden">
-          {/* In a real app, this would be a Google Maps or Mapbox integration */}
           <div className="h-full w-full flex items-center justify-center bg-zinc-200">
             <div className="text-center">
               <div className="mx-auto mb-2 text-red-600">
@@ -51,7 +46,6 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* FAQ Section */}
       <div className="mt-16">
         <h2 className="text-2xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

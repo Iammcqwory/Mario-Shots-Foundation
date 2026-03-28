@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHeader } from "@/components/layout/page-header";
 
 export const metadata: Metadata = {
   title: "Stories | Mario Shots Foundation",
@@ -8,14 +9,12 @@ export const metadata: Metadata = {
 export default function StoriesPage() {
   return (
     <div className="container mx-auto px-4 py-16">
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Stories</h1>
-        <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-          Discover the impactful stories from our community of photographers and program participants.
-        </p>
-      </div>
+      <PageHeader
+        title="Stories"
+        description="Discover the impactful stories from our community of photographers and program participants."
+        descriptionClassName="dark:text-zinc-400"
+      />
 
-      {/* Placeholder for stories content */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div className="bg-zinc-100 dark:bg-zinc-900 p-6 rounded-lg text-center">
           <h3 className="text-xl font-bold mb-2">Coming Soon: New Stories</h3>
@@ -26,4 +25,4 @@ export default function StoriesPage() {
       </div>
     </div>
   );
-} 
+}

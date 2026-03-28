@@ -1,42 +1,38 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageHeader } from "@/components/layout/page-header";
 import { programs } from "@/lib/constants";
-import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "Programs",
-  description: "Explore the Mario Shots Foundation's programs for youth empowerment, mental wellness, and cultural preservation.",
+  description:
+    "Explore the Mario Shots Foundation's programs for youth empowerment, mental wellness, and cultural preservation.",
 };
 
 export default function ProgramsPage() {
   return (
     <div className="container mx-auto px-4 py-16">
-      {/* Hero Section */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Programs</h1>
-        <p className="text-xl text-zinc-600 max-w-3xl mx-auto">
-          The Mario Shots Foundation offers various programs designed to empower youth,
-          promote mental wellness, and preserve cultural memory through photography and storytelling.
-        </p>
-      </div>
+      <PageHeader
+        title="Our Programs"
+        description="The Mario Shots Foundation offers various programs designed to empower youth, promote mental wellness, and preserve cultural memory through photography and storytelling."
+      />
 
-      {/* Programs Overview - Card Grid Layout */}
       <div className="mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Programs</h2>
           <p className="text-lg text-zinc-600 max-w-2xl mx-auto">
-            Explore our core programs designed to empower youth, promote mental wellness, and preserve cultural memory.
+            Explore our core programs designed to empower youth, promote mental wellness, and preserve cultural
+            memory.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {programs.map((program, index) => (
             <Card key={index} className="overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
               <div
-                className={"relative h-48 w-full bg-zinc-200 dark:bg-black program-card-bg"}
+                className="relative h-48 w-full bg-zinc-200 dark:bg-black program-card-bg"
                 data-image={program.imageSrc}
               />
               <CardHeader className="p-4 pb-2 flex-grow">
@@ -55,7 +51,6 @@ export default function ProgramsPage() {
         </div>
       </div>
 
-      {/* Impact Statistics */}
       <div className="mb-16 bg-zinc-50 p-10 rounded-lg">
         <h2 className="text-3xl font-bold mb-8 text-center">Our Impact</h2>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
@@ -74,7 +69,6 @@ export default function ProgramsPage() {
         </div>
       </div>
 
-      {/* How to Participate */}
       <div className="mb-16">
         <h2 className="text-3xl font-bold mb-8 text-center">How You Can Participate</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -86,7 +80,7 @@ export default function ProgramsPage() {
             <CardContent>
               <p className="text-zinc-600">
                 Our workshops are open to photographers of all levels, with special programs for youth
-                and beginners. No equipment needed—we provide cameras and gear.
+                and beginners. No equipment needed-we provide cameras and gear.
               </p>
             </CardContent>
             <CardFooter>
@@ -120,7 +114,6 @@ export default function ProgramsPage() {
         </div>
       </div>
 
-      {/* CTA */}
       <div className="bg-red-600 text-white p-10 rounded-lg text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
         <p className="text-lg mb-6 max-w-2xl mx-auto">

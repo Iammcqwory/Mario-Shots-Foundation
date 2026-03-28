@@ -85,6 +85,13 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundImage: {
+        "pattern-1": "url('/patterns/pattern-1.jpg')",
+        "pattern-2": "url('/patterns/pattern-2.jpg')",
+        "pattern-3": "url('/patterns/pattern-3.jpg')",
+        "pattern-4": "url('/patterns/pattern-4.jpg')",
+        "pattern-5": "url('/patterns/pattern-5.jpg')",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

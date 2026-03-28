@@ -71,9 +71,8 @@ export function Testimonials() {
                 key={index}
                 variant="ghost"
                 size="icon"
-                className={`w-3 h-3 rounded-full p-0 ${
-                  index === activeIndex ? "bg-red-600" : "bg-zinc-200 dark:bg-black"
-                }`}
+                className={`w-3 h-3 rounded-full p-0 ${index === activeIndex ? "bg-red-600" : "bg-zinc-200 dark:bg-black"
+                  }`}
                 onClick={() => {
                   if (isAnimating) return;
                   setIsAnimating(true);

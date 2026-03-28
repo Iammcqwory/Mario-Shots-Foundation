@@ -1,24 +1,15 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 
-export function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+type HeroProps = {
+  header: ReactNode;
+};
 
-  useEffect(() => {
-    // In a real app, this would be a real video
-    // For now, we'll just simulate the video being loaded
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+export function Hero({ header }: HeroProps) {
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -28,26 +19,18 @@ export function Hero() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Video Background Placeholder - In real app use actual video */}
-      <div
-        className="absolute inset-0 bg-black/60 z-10 hero-bg-image"
-      />
+      <div className="absolute inset-0 bg-black/60 z-10 hero-bg-image bg-cover" />
 
-      {/* Content */}
-      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
-          Honoring a Legacy,<br />Empowering the Future
-        </h1>
-        <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">
-          The Mario Shots Foundation preserves Mario's legacy while empowering youth in photography,
-          promoting mental wellness, and preserving cultural memory through storytelling.
-        </p>
+      <div className="absolute inset-0 z-15 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-red-600/20 opacity-20 animate-spin-slow mix-blend-overlay blur-xl" />
+        <div className="absolute top-1/4 right-10 w-64 h-64 rounded-3xl bg-red-500/15 opacity-15 animate-float rotate-12 mix-blend-screen" />
+        <div className="absolute bottom-20 left-1/4 w-32 h-32 rounded-full bg-red-400/20 opacity-20 animate-float delay-700 mix-blend-color-dodge" />
+      </div>
+
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 gap-8">
+        {header}
         <div className="flex flex-col sm:flex-row gap-4">
-          <Button
-            size="lg"
-            className="bg-red-600 hover:bg-red-700"
-            asChild
-          >
+          <Button size="lg" className="bg-red-600 hover:bg-red-700" asChild>
             <Link href="/programs">Explore Our Programs</Link>
           </Button>
           <Button
@@ -61,7 +44,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <button
         onClick={scrollToContent}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 text-white animate-bounce"

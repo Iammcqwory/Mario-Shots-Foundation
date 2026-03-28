@@ -1,6 +1,6 @@
 // src/components/rio/ChatMessages.tsx
 import React from "react";
-import { Message } from "./rio-types";
+import type { Message } from "./rio-types";
 import { cn } from "@/lib/utils";
 
 export const ChatMessages = React.memo(function ChatMessages({ messages, isTyping, endRef }: { messages: Message[]; isTyping: boolean; endRef?: React.RefObject<HTMLDivElement> }) {

@@ -14,7 +14,6 @@ export const siteConfig = {
 export const navigationLinks = [
   { name: "Home", href: "/" },
   { name: "Programs", href: "/programs" },
-  { name: "Stories", href: "/stories" },
   { name: "Gallery", href: "/gallery" },
   { name: "Events", href: "/events" },
   { name: "About", href: "/about" },
@@ -139,4 +138,37 @@ export const galleryCategories = [
   "documentary",
   "nature",
   "abstract",
+];
+
+export const partners = [
+  {
+    name: "Studio Sitini",
+    logo: "https://via.placeholder.com/160x80?text=Sitini",
+    href: "https://studiositini.example"
+  },
+  {
+    name: "Eldoret Arts Council",
+    logo: "https://via.placeholder.com/160x80?text=EAC",
+    href: "https://eldoretarts.example"
+  },
+  {
+    name: "Lens Lab",
+    logo: "https://via.placeholder.com/160x80?text=Lens+Lab",
+    href: "https://lenslab.example"
+  },
+  {
+    name: "Global Photo Alliance",
+    logo: "https://via.placeholder.com/160x80?text=Global+Photo",
+    href: "https://globalphoto.example"
+  },
+  {
+    name: "Canon Kenya",
+    logo: "https://via.placeholder.com/160x80?text=Canon+KE",
+    href: "https://canonkenya.example"
+  },
+  {
+    name: "Creative Soul Collective",
+    logo: "https://via.placeholder.com/160x80?text=Creative+Soul",
+    href: "https://creativesoul.example"
+  },
 ];

@@ -34,11 +34,10 @@ export function Header() {
 
   return (
     <header
-      className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background dark:bg-black/90 shadow-md py-2"
-          : "bg-transparent py-4"
-      }`}
+      className={`w-full fixed top-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/95 dark:bg-black/95 shadow-md py-2"
+        : "bg-transparent py-4"
+        }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">

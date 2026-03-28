@@ -4,40 +4,32 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { upcomingEvents } from "@/lib/constants";
+import { PageHeader } from "@/components/layout/page-header";
 
 export const metadata: Metadata = {
   title: "Events | Mario Shots Foundation",
-  description: "Join our upcoming events, workshops, and exhibitions to learn, connect, and grow with the creative community.",
+  description:
+    "Join our upcoming events, workshops, and exhibitions to learn, connect, and grow with the creative community.",
 };
 
 export default function EventsPage() {
   return (
     <div className="container mx-auto px-4 py-16">
-      {/* Hero Section */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Upcoming Events</h1>
-        <p className="text-xl text-zinc-600 max-w-3xl mx-auto">
-          Join us for workshops, exhibitions, and community gatherings that celebrate photography,
-          storytelling, and creative expression.
-        </p>
-      </div>
+      <PageHeader
+        title="Upcoming Events"
+        description="Join us for workshops, exhibitions, and community gatherings that celebrate photography, storytelling, and creative expression."
+      />
 
-      {/* Events Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {upcomingEvents.map((event, index) => (
           <Card key={index} className="overflow-hidden">
             <div className="relative h-48 w-full">
-              <Image
-                src={event.imageSrc}
-                alt={event.title}
-                fill
-                className="object-cover"
-              />
+              <Image src={event.imageSrc} alt={event.title} fill className="object-cover" />
             </div>
             <CardHeader>
               <CardTitle className="text-xl">{event.title}</CardTitle>
               <CardDescription className="text-red-600 font-medium">
-                {event.date} • {event.location}
+                {event.date} - {event.location}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -50,7 +42,6 @@ export default function EventsPage() {
         ))}
       </div>
 
-      {/* Newsletter Section */}
       <div className="bg-zinc-50 dark:bg-black p-10 rounded-lg text-center">
         <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
         <p className="text-lg mb-6 max-w-2xl mx-auto">
@@ -67,4 +58,4 @@ export default function EventsPage() {
       </div>
     </div>
   );
-} 
+}
