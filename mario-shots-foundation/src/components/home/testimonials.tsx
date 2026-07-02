@@ -27,7 +27,9 @@ export function Testimonials() {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextTestimonial, 8000);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 

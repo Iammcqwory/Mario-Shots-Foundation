@@ -16,8 +16,9 @@ import {
     handleTechSupportFlow,
 } from "../flows/conversationFlow";
 
+const seeded = initialMessages.map((msg) => ({ ...msg, timestamp: null }));
+
 export function useRioBrain(userName: string | null, _currentPath: string) {
-    const seeded = initialMessages.map((msg) => ({ ...msg, timestamp: null }));
     const { messages, setMessages } = useChatHistory("rio-chat-history", seeded as Message[]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
