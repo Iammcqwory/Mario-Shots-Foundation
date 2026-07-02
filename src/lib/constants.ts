@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Mario Shots Foundation",
   description: "A community-driven initiative to honor the life and legacy of Mario—a visionary storyteller and photographer.",
-  url: "https://marioshotsfoundation.org",
-  ogImage: "/images/og-image.jpg",
+  url: "https://marioshotsfoundation.vercel.app",
+  ogImage: "/images/about/mario-ndege.jpg",
   links: {
     twitter: "https://twitter.com/marioshotsfoundation",
     instagram: "https://instagram.com/marioshotsfoundation",

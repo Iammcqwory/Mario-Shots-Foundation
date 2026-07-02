@@ -17,19 +17,38 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/makoribrianjnr@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          _subject: `[Mario Shots Foundation] ${formState.subject}`,
+          message: formState.message,
+          _template: "table",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Submission failed (${response.status})`);
+      }
+
       setIsSubmitted(true);
       setFormState({
         name: "",
@@ -37,7 +56,13 @@ export default function ContactForm() {
         subject: "",
         message: "",
       });
-    }, 1500);
+    } catch {
+      setSubmitError(
+        "Sorry, your message could not be sent. Please try again or email us directly at info@marioshotsfoundation.org."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -169,6 +194,12 @@ export default function ContactForm() {
                     rows={6}
                   />
                 </div>
+
+                {submitError && (
+                  <p className="text-sm text-red-600" role="alert">
+                    {submitError}
+                  </p>
+                )}
 
                 <Button
                   type="submit"
